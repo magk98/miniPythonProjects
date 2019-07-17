@@ -1,10 +1,11 @@
 class Character:
-    def __init__(self, name, hp=10, power=1, level=1, x=0, y=0):
+    def __init__(self, name, hp=10, power=1, level=1, x=0, y=0, exp=0):
         self.name = name
         self.state = "alive"
         self.hp = hp
         self.power = power
         self.level = level
+        self.exp = exp
         self.bag = []
         self.money = 0
         self.x, self.y = x, y
@@ -12,10 +13,10 @@ class Character:
 
 class Player(Character):
     def move(self, place, x=0, y=0):
-        if x != 0 and 0 <= self.x + x <= place.width:
+        if x != 0 and 0 <= self.x + x <= place.width - 1:
             self.x += x
             return True
-        elif y != 0 and 0 <= self.y + y <= place.height:
+        elif y != 0 and 0 <= self.y + y <= place.height - 1:
             self.y += y
             return True
         print("You can't go there!")
@@ -28,6 +29,11 @@ class Player(Character):
             enemy.state = "dead"
             print("{} was defeated!".format(enemy.name))
             self.bag += enemy.bag
+            self.money += enemy.level
+            self.exp += enemy.exp
+            while self.exp >= self.level * 50:
+                self.exp -= self.level * 50
+                self.level += 1
         else:
             enemy.attack(self)
 
