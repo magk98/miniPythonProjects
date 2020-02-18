@@ -5,4 +5,4 @@ Repository with projects for my own training:
 3. Music Player - WIP
 4. Game of Life - done
 5. Predator-Prey simulation - done
-6. Space Invaders - WIP
+6. Space Invaders (in another repo) - done (v1.0)
