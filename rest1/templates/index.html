@@ -1,0 +1,18 @@
+{% block content %}
+
+    <h2> Pokemon Battles </h2>
+    <form action="" method="post">
+    <p>
+    {{form.pokemon1_name.label}}<br>
+        {{ form.pokemon1_name(size=30) }}<br>
+        {{form.pokemon1_level.label}}<br>
+        {{ form.pokemon1_level(size=10) }}<br>
+            {{form.pokemon2_name.label}}<br>
+        {{ form.pokemon2_name(size=30) }}<br>
+        {{form.pokemon2_level.label}}<br>
+        {{ form.pokemon2_level(size=10) }}<br>
+    </p>
+    <p>{{ form.submit() }}</p>
+    </form>
+
+{% endblock %}
