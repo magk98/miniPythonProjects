@@ -1,3 +1,6 @@
+from shutil import copyfileobj
+from tempfile import NamedTemporaryFile
+
 from flask import Flask, render_template, request
 
 from forms import MainForm
@@ -15,8 +18,8 @@ def main_form():
         pokemon_1 = CharacterMaker.Pokemon(result['pokemon1_name'], result['pokemon1_level'])
         pokemon_2 = CharacterMaker.Pokemon(result['pokemon2_name'], result['pokemon2_level'])
         winner = pokemon_1.fight(pokemon_2)
-        #image = winner.get_sprite() todo - winning pokemon image
-        return render_template('submit.html', pokemon_1=pokemon_1, pokemon_2=pokemon_2, winner=winner)
+        flavor, berry = CharacterMaker.define_nature()
+        return render_template('submit.html', pokemon_1=pokemon_1, pokemon_2=pokemon_2, winner=winner, flavor=flavor, berry=berry)
     return render_template('index.html', form=form)
 
 
